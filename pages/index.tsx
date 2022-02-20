@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
@@ -16,6 +16,10 @@ const Home: FunctionComponent = () => {
 
     setSearchResults(drinks);
   };
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    searchInputRef?.current?.focus?.();
+  }, []);
   return (
     <div className={styles.container}>
       <Head>
@@ -33,6 +37,7 @@ const Home: FunctionComponent = () => {
         <input
           className={styles.input}
           onChange={(e) => searchHandler(e.target.value)}
+          ref={searchInputRef}
         />
         {searchResults?.map((drink: Drink) => {
           return <DrinkSearchResult drink={drink} key={drink?.strDrink} />;
