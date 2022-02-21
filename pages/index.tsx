@@ -3,7 +3,10 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import DrinkSearchResult from "../components/DrinkSearchResult";
+import DrinkSearchResults from "../components/DrinkSearchResults";
 import { Drink } from "../types";
+
+import TextField from "@mui/material/TextField";
 
 const Home: FunctionComponent = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -17,6 +20,7 @@ const Home: FunctionComponent = () => {
     setSearchResults(drinks);
   };
   const searchInputRef = useRef<HTMLInputElement>(null);
+  console.log({ searchInputRef });
   useEffect(() => {
     searchInputRef?.current?.focus?.();
   }, []);
@@ -31,17 +35,28 @@ const Home: FunctionComponent = () => {
         <Image
           src="/../public/thirsty.png"
           alt=""
-          width="300px"
-          height="400px"
+          width="500px"
+          height="250px"
         />
         <input
           className={styles.input}
           onChange={(e) => searchHandler(e.target.value)}
           ref={searchInputRef}
+        ></input>
+        {/* <TextField
+          id="standard-basic"
+          label="Standard"
+          variant="standard"
+          onChange={(e) => searchHandler(e.target.value)}
+          ref={searchInputRef}
+        /> */}
+        <DrinkSearchResults
+          currentInput={searchInputRef?.current?.value}
+          drinks={searchResults}
         />
-        {searchResults?.map((drink: Drink) => {
+        {/* {searchResults?.map((drink: Drink) => {
           return <DrinkSearchResult drink={drink} key={drink?.strDrink} />;
-        })}
+        })} */}
       </div>
     </div>
   );
