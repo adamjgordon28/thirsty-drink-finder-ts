@@ -21,6 +21,10 @@ const DrinkSearchResults: FunctionComponent<DrinkSearchResultsProps> = ({
           style={{
             maxHeight: "51.5vh",
             overflow: "auto",
+            // borderLeft: "2px solid rgb(235, 235, 235)",
+            // borderRight: "2px solid rgb(235, 235, 235)",
+            borderBottom:
+              drinks?.length > 10 ? "2px solid rgb(235, 235, 235)" : "",
           }}
         >
           {/* {!!drinks?.length && (

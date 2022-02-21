@@ -1,9 +1,10 @@
 .container {
   display: flex;
   flex-direction: row;
+  margin-top: 4px;
 }
 
-.label {
+.colorTile {
   width: 16px;
   height: 16px;
   min-width: 16px;

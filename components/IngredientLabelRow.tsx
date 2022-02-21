@@ -10,7 +10,7 @@ const IngredientLabelRow: FunctionComponent<IngredientLabelRowProps> = ({
   return (
     <div className={styles.container}>
       <div
-        className={styles.label}
+        className={styles.colorTile}
         style={{
           backgroundColor: color,
         }}
