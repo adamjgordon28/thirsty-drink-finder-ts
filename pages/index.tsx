@@ -30,7 +30,13 @@ const Home: FunctionComponent = () => {
         <link rel="icon" href="/martini.ico" />
       </Head>
       <div className={styles.contentContainer}>
-        <Image src="/thirsty.svg" alt="Thirsty Logo" width={500} height={250} />
+        <Image
+          src="/thirsty.svg"
+          alt="Thirsty Logo"
+          width={500}
+          height={250}
+          priority
+        />
         <SearchInput changeHandler={(e) => searchHandler(e.target.value)} />
         <DrinkSearchResults
           currentInput={searchInputRef?.current?.value}

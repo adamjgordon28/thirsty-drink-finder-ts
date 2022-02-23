@@ -18,37 +18,39 @@ const DrinkSearchResults: FunctionComponent<DrinkSearchResultsProps> = ({
 }) => {
   return (
     <>
-      <div>
-        <List
-          className={
-            drinks?.length > 10
-              ? styles.manyResultsContainer
-              : styles.resultsContainer
-          }
-        >
-          {!!drinks?.length &&
-            drinks?.map((drink: Drink) => {
-              return (
-                <>
-                  <Link href={`/drinks/${drink?.strDrink}`} passHref>
-                    <div>
-                      <ListItem key={drink?.strDrink} button>
-                        <ListItemText primary={drink?.strDrink} />
-                        <ArrowForwardIosIcon />
-                      </ListItem>
-                      <Divider />
-                    </div>
-                  </Link>
-                </>
-              );
-            })}
-          {!!currentInput && !drinks?.length && (
-            <ListItem className={styles.noDrinksNotification}>
-              <ListItemText primary={NO_DRINKS_MATCH_SEARCH} />
-            </ListItem>
-          )}
-        </List>
-      </div>
+      <List
+        className={
+          drinks?.length > 10
+            ? styles.manyResultsContainer
+            : styles.resultsContainer
+        }
+      >
+        {!!drinks?.length &&
+          drinks?.map((drink: Drink) => {
+            return (
+              <div key={drink?.strDrink}>
+                <Link
+                  href={`/drinks/${drink?.strDrink}`}
+                  key={`/drinks/${drink?.strDrink}`}
+                  passHref
+                >
+                  <div>
+                    <ListItem key={drink?.strDrink} button>
+                      <ListItemText primary={drink?.strDrink} />
+                      <ArrowForwardIosIcon />
+                    </ListItem>
+                    <Divider />
+                  </div>
+                </Link>
+              </div>
+            );
+          })}
+        {!!currentInput && !drinks?.length && (
+          <ListItem className={styles.noDrinksNotification}>
+            <ListItemText primary={NO_DRINKS_MATCH_SEARCH} />
+          </ListItem>
+        )}
+      </List>
     </>
   );
 };

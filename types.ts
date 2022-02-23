@@ -67,8 +67,7 @@ export type DrinkSearchResultsProps = {
   drinks: Drink[];
 };
 
-export type IngredientChartAreaProps = {
-  isPieChartEmpty: boolean;
+export type IngredientsChartAreaProps = {
   ingredientsList: IngredientsListElement[];
 };
 
@@ -80,6 +79,16 @@ export type IngredientLabelRowProps = {
 export type IngredientsListElement = {
   ingredient: string | undefined;
   measure: string | undefined;
+};
+
+export type PieChartData = {
+  labels: any[];
+  datasets: PieChartDataSet[];
+};
+
+export type PieChartDataSet = {
+  data: (number | null)[];
+  backgroundColor: string[];
 };
 
 export type SearchInputProps = {

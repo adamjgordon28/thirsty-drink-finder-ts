@@ -11,7 +11,7 @@ export const unitToOunceConverter: UnitToOunceConverter = {
   ml: 0.033814,
   oz: 1,
   part: 1, // just going on faith that all other ingredients will also use "parts"
-  parts: 1,
+  parts: 1, // just going on faith that all other ingredients will also use "parts"
   pint: 16,
   shot: 1.5,
   shots: 1.5,

@@ -2,51 +2,37 @@ import React, { FunctionComponent, ReactNode } from "react";
 
 import { Pie } from "react-chartjs-2";
 
-import IngredientLabelRow from "../components/IngredientLabelRow";
+import IngredientLabelRow from "./IngredientLabelRow";
 import { colorScale } from "../constants/colors";
 import { CANNOT_DISPLAY_GRAPH } from "../constants/messaging";
-import styles from "../styles/IngredientChartArea.module.css";
-import { IngredientChartAreaProps, IngredientsListElement } from "../types";
-import { getPieChartData } from "../utils/units";
+import { pieChartOptions } from "../constants/pieChart";
+import styles from "../styles/IngredientsChartArea.module.css";
+import { IngredientsChartAreaProps, IngredientsListElement } from "../types";
+import {
+  getPieChartConfig,
+  getPieChartData,
+  isPieChartDataEmpty,
+} from "../utils/pieChart";
 
-const IngredientChartArea: FunctionComponent<IngredientChartAreaProps> = ({
+const IngredientsChartArea: FunctionComponent<IngredientsChartAreaProps> = ({
   ingredientsList,
-  isPieChartEmpty,
 }) => {
-  const data = {
-    labels: [],
-    datasets: [
-      {
-        data: getPieChartData(ingredientsList),
-        backgroundColor: colorScale,
-        hoverBackgroundColor: colorScale,
-      },
-    ],
-  };
-
-  const pieChartOptions = {
-    events: [],
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
-  };
-
+  const pieChartData: (number | null)[] = getPieChartData(ingredientsList);
+  const isPieChartEmpty = isPieChartDataEmpty(pieChartData);
   const renderIngredientLabels: (
     ingredients: IngredientsListElement[]
   ) => ReactNode[] = (ingredients) => {
     return ingredients?.map(({ ingredient, measure }, index) => {
       return (
-        <>
+        <div key={ingredient}>
           {ingredient && measure && (
             <IngredientLabelRow
-              label={`${ingredient} (${measure})`}
               color={colorScale[index]}
               key={`${ingredient} (${measure})`}
+              label={`${ingredient} (${measure})`}
             />
           )}
-        </>
+        </div>
       );
     });
   };
@@ -62,7 +48,10 @@ const IngredientChartArea: FunctionComponent<IngredientChartAreaProps> = ({
           </div>
         ) : (
           <div className={styles.chart}>
-            <Pie data={data} options={pieChartOptions} />
+            <Pie
+              data={getPieChartConfig(ingredientsList)}
+              options={pieChartOptions}
+            />
           </div>
         )}
       </div>
@@ -70,4 +59,4 @@ const IngredientChartArea: FunctionComponent<IngredientChartAreaProps> = ({
   );
 };
 
-export default IngredientChartArea;
+export default IngredientsChartArea;

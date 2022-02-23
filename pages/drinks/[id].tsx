@@ -7,26 +7,17 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
-import IngredientChartArea from "../../components/IngredientChartArea";
+import IngredientsChartArea from "../../components/IngredientsChartArea";
 import { THIRSTY } from "../../constants/messaging";
 import { BASE_API_URL } from "../../constants/urls";
 import styles from "../../styles/DrinkPage.module.css";
 import { Drink, DrinkPageProps, IngredientsListElement } from "../../types";
-import {
-  getIngredientsList,
-  getPieChartData,
-  isPieChartDataEmpty,
-} from "../../utils/units";
+import { getIngredientsList } from "../../utils/units";
 
 import "chart.js/auto";
 
 const DrinkPage: FunctionComponent<DrinkPageProps> = ({ drink }) => {
   const ingredientsList: IngredientsListElement[] = getIngredientsList(drink);
-
-  const pieChartData: (number | null)[] = getPieChartData(ingredientsList);
-
-  const isPieChartEmpty = isPieChartDataEmpty(pieChartData);
-
   return (
     <div className={styles.pageContainer}>
       <Head>
@@ -44,11 +35,11 @@ const DrinkPage: FunctionComponent<DrinkPageProps> = ({ drink }) => {
         <div className={styles.drinkContentContainer}>
           <div className={styles.thumbnailAndNameContainer}>
             <Image
-              className={styles.thumbnail}
               src={`${drink?.strDrinkThumb}/preview`}
+              alt=""
+              className={styles.thumbnail}
               width={250}
               height={250}
-              alt=""
             />
             <div className={styles.nameContainer}>{drink?.strDrink}</div>
           </div>
@@ -56,10 +47,7 @@ const DrinkPage: FunctionComponent<DrinkPageProps> = ({ drink }) => {
             <div className={styles.instructionsContainer}>
               {drink?.strInstructions}
             </div>
-            <IngredientChartArea
-              ingredientsList={ingredientsList}
-              isPieChartEmpty={isPieChartEmpty}
-            />
+            <IngredientsChartArea ingredientsList={ingredientsList} />
           </div>
         </div>
       </div>
