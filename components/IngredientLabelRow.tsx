@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
-import styles from "../styles/IngredientLabelRow.module.css";
 
+import styles from "../styles/IngredientLabelRow.module.css";
 import { IngredientLabelRowProps } from "../types";
 
 const IngredientLabelRow: FunctionComponent<IngredientLabelRowProps> = ({
@@ -8,7 +8,7 @@ const IngredientLabelRow: FunctionComponent<IngredientLabelRowProps> = ({
   label,
 }) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.colorTileAndLabelContainer}>
       <div
         className={styles.colorTile}
         style={{

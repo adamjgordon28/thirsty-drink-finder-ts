@@ -1,13 +1,15 @@
 import React, { FunctionComponent } from "react";
+
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import Divider from "@mui/material/Divider";
-import Link from "next/link";
-import styles from "../styles/DrinkSearchResult.module.css";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
+import Link from "next/link";
+
+import { NO_DRINKS_MATCH_SEARCH } from "../constants/messaging";
+import styles from "../styles/DrinkSearchResults.module.css";
 import { Drink, DrinkSearchResultsProps } from "../types";
 
 const DrinkSearchResults: FunctionComponent<DrinkSearchResultsProps> = ({
@@ -18,23 +20,12 @@ const DrinkSearchResults: FunctionComponent<DrinkSearchResultsProps> = ({
     <>
       <div>
         <List
-          style={{
-            maxHeight: "51.5vh",
-            overflow: "auto",
-            // borderLeft: "2px solid rgb(235, 235, 235)",
-            // borderRight: "2px solid rgb(235, 235, 235)",
-            borderBottom:
-              drinks?.length > 10 ? "2px solid rgb(235, 235, 235)" : "",
-          }}
+          className={
+            drinks?.length > 10
+              ? styles.manyResultsContainer
+              : styles.resultsContainer
+          }
         >
-          {/* {!!drinks?.length && (
-            <>
-              <ListItem>
-                <ListItemText primary={`${drinks?.length} Results`} />
-              </ListItem>
-              <Divider />
-            </>
-          )} */}
           {!!drinks?.length &&
             drinks?.map((drink: Drink) => {
               return (
@@ -52,28 +43,11 @@ const DrinkSearchResults: FunctionComponent<DrinkSearchResultsProps> = ({
               );
             })}
           {!!currentInput && !drinks?.length && (
-            <ListItem style={{ textAlign: "center" }}>
-              <ListItemText
-                primary={
-                  "We're sorry, there are no drinks that match that search"
-                }
-              />
+            <ListItem className={styles.noDrinksNotification}>
+              <ListItemText primary={NO_DRINKS_MATCH_SEARCH} />
             </ListItem>
           )}
         </List>
-        {/* {drinks?.length > 10 && (
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            10
-          </div>
-        )} */}
       </div>
     </>
   );

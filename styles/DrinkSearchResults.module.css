@@ -1,0 +1,14 @@
+.resultsContainer {
+  overflow-y: scroll;
+  max-height: 50vh;
+}
+
+.manyResultsContainer {
+  overflow-y: scroll;
+  max-height: 50vh;
+  border-bottom: 2px solid rgb(235, 235, 235);
+}
+
+.noDrinksNotification {
+  text-align: center;
+}

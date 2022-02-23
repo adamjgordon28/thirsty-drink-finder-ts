@@ -1,141 +1,78 @@
-.backButton {
-  cursor: pointer;
+.pageContainer {
+  min-width: 1200px;
+}
+
+.arrowContainer {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  font-size: 24px;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.arrowBack {
+  width: 80px;
+  height: 40px;
+  margin: 16px 0 0 8px;
+  color: black;
 }
 
 .pageContainer {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: red; */
+  width: 100%;
 }
 
 .drinkContentContainer {
-  width: 1000px;
-  /* min-width: 600px; */
-  background-color: #fefefe;
-  padding: 16px 32px 24px 32px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(239, 240, 241);
-  /* box-shadow: 1px 1px 5px lightgrey; */
-  /* border-radius: 8px; */
-  /* background-color: orange; */
+  width: 1000px;
+  padding: 16px 32px 24px 32px;
+  background-color: #eff0f1;
 }
 
 .thumbnailAndNameContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: yellow; */
-  background-color: #fefefe;
-  /* border-radius: 8px; */
-  padding: 16px;
-  padding-right: 32px;
-  padding-left: 32px;
+  padding: 16px 32px 16px 32px;
+  background-color: #ffffff;
   box-shadow: 2px 2px 5px lightgrey;
 }
 
 .thumbnail {
   border-radius: 50%;
-  /* background-color: green; */
 }
 
 .nameContainer {
-  font-size: 24px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  /* background-color: blue; */
+  margin: 32px 0 8px 0;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 32px;
+  font-weight: bold;
 }
 
 .ingredientsAndInstructionsAndChartContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* background-color: purple; */
   width: 100%;
   margin-top: 48px;
 }
 
 .instructionsContainer {
+  overflow-y: scroll;
   text-align: left;
-  background-color: brown;
-  height: 232px;
-  max-height: 232px;
-  overflow-y: scroll;
-  background-color: #fefefe;
-  /* border-radius: 2px; */
-  padding: 4px 20px 8px 20px;
-  box-shadow: 2px 2px 5px lightgrey;
-  font-size: 18px;
+  min-width: 432px;
   width: 432px;
-  min-width: 432px;
+  height: 232px;
   max-width: 432px;
-}
-
-.ingredientsAndChartContainer {
-  padding: 16px 8px 16px 8px;
-  padding-bottom: 16px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  /* width: 45%; */
-  min-width: 432px;
-  max-width: 432px;
-  background-color: #fefefe;
-  /* border-radius: 8px; */
+  max-height: 232px;
+  padding: 16px 24px 0px 24px;
+  border-bottom: 16px solid #ffffff;
+  background-color: #ffffff;
   box-shadow: 2px 2px 5px lightgrey;
-  /* background-color: orange; */
-  /* padding-left: 6px; */
-}
-
-.ingredientsContainer {
-  padding-top: 8px;
-  padding-right: 4px;
-  /* background-color: pink; */
-  /* border-right: 2px solid rgb(239, 240, 241); */
-  /* margin-right: 16px; */
-  width: 190px;
-  min-width: 200px;
-  /* background-color: green; */
-  margin-right: 8px;
-  height: 200px;
-  max-height: 200px;
-  overflow-y: scroll;
-  /* background-color: red; */
-  font-size: 16px;
-}
-
-.chartContainer {
-  /* background-color: purple; */
-}
-
-.chart {
-  width: 200px;
-  max-width: 200px;
-  min-width: 200px;
-  /* background-color: green; */
-}
-
-.cannotDisplayChart {
-  display: flex;
-  width: 200px;
-  height: 200px;
-  width: 200px;
-  max-width: 200px;
-  min-width: 200px;
-  background-color: rgb(239, 240, 241);
-  border-radius: 50%;
-  text-align: center;
-  font-size: 16px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
 }

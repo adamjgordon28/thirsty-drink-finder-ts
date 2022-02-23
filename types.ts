@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react";
+
 export type Drink = {
   dateModified: string | null;
   idDrink: string;
@@ -65,6 +67,11 @@ export type DrinkSearchResultsProps = {
   drinks: Drink[];
 };
 
+export type IngredientChartAreaProps = {
+  isPieChartEmpty: boolean;
+  ingredientsList: IngredientsListElement[];
+};
+
 export type IngredientLabelRowProps = {
   color: string;
   label: string;
@@ -73,6 +80,10 @@ export type IngredientLabelRowProps = {
 export type IngredientsListElement = {
   ingredient: string | undefined;
   measure: string | undefined;
+};
+
+export type SearchInputProps = {
+  changeHandler: (event: ChangeEvent<HTMLInputElement>) => Promise<void>;
 };
 
 export type UnitToOunceConverter = {
