@@ -23,7 +23,15 @@ import {
   isPieChartDataEmpty,
 } from "../../utils/units";
 
+import ArrowBack from "@mui/icons-material/ArrowBack";
+
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+
 const pieChartOptions = {
+  events: [],
   plugins: {
     legend: {
       display: false,
@@ -70,37 +78,63 @@ const DrinkPage: FunctionComponent<DrinkPageProps> = ({ drink }) => {
       </Head>
       <Link href="/" passHref>
         <div className={styles.backButton}>
-          <h3>{"< Back"}</h3>
+          <ArrowBack
+            style={{
+              color: "black",
+              height: 40,
+              width: 80,
+              margin: "16px 0 0 8px",
+              // backgroundColor: "rgb(239, 240, 241)",
+              // color: "white",
+            }}
+          />
         </div>
       </Link>
-      <div className={styles.drinkContentContainer}>
-        <div className={styles.thumbnailAndNameContainer}>
-          <Image
-            className={styles.thumbnail}
-            src={`${drink?.strDrinkThumb}/preview`}
-            width={250}
-            height={250}
-            alt=""
-          />
-          <div className={styles.nameContainer}>{drink?.strDrink}</div>
-        </div>
+      <div className={styles.pageContainer}>
+        <div className={styles.drinkContentContainer}>
+          <div className={styles.thumbnailAndNameContainer}>
+            <Image
+              className={styles.thumbnail}
+              src={`${drink?.strDrinkThumb}/preview`}
+              width={250}
+              height={250}
+              alt=""
+            />
+            <div className={styles.nameContainer}>{drink?.strDrink}</div>
+          </div>
 
-        <div className={styles.ingredientsAndChartContainer}>
-          <div className={styles.ingredientsContainer}>
-            {renderIngredientLabels(ingredientsList)}
-          </div>
-          <div className={styles.chartContainer}>
-            {isPieChartDataEmpty(pieChartData) ? (
-              <div className={styles.cannotDisplayChart}>
-                Cannot display graph for this drink
+          <div className={styles.ingredientsAndInstructionsAndChartContainer}>
+            {/* <Card>
+              <CardContent>
+                <Typography
+                  sx={{ fontSize: 16, textAlign: "center", overflowY: "auto" }}
+                >
+                  {drink?.strInstructions}
+                </Typography>
+              </CardContent>
+            </Card> */}
+
+            <div className={styles.instructionsContainer}>
+              <p>{drink?.strInstructions}</p>
+            </div>
+
+            <div className={styles.ingredientsAndChartContainer}>
+              <div className={styles.ingredientsContainer}>
+                {renderIngredientLabels(ingredientsList)}
               </div>
-            ) : (
-              <Pie data={data} options={pieChartOptions} />
-            )}
+              <div className={styles.chartContainer}>
+                {isPieChartDataEmpty(pieChartData) ? (
+                  <div className={styles.cannotDisplayChart}>
+                    Cannot display graph for this drink
+                  </div>
+                ) : (
+                  <div className={styles.chart}>
+                    <Pie data={data} options={pieChartOptions} />
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
-        <div className={styles.instructionsContainer}>
-          <p>{drink?.strInstructions}</p>
         </div>
       </div>
     </>

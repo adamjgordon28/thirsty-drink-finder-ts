@@ -60,6 +60,11 @@ export type DrinkSearchResultProps = {
   drink: Drink;
 };
 
+export type DrinkSearchResultsProps = {
+  currentInput?: string | undefined;
+  drinks: Drink[];
+};
+
 export type IngredientLabelRowProps = {
   color: string;
   label: string;
