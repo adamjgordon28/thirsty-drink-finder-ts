@@ -9,10 +9,11 @@
   width: 100%;
 }
 
-.arrowBack {
+.arrowContainer svg {
   width: 72px;
   height: 40px;
   color: black;
+  cursor: pointer;
 }
 
 .pageContainer {
@@ -45,7 +46,7 @@
 }
 
 .nameContainer {
-  margin: 32px 0 8px 0;
+  margin: 32px 0px 8px 0px;
   font-family: "Roboto Condensed", sans-serif;
   font-size: 32px;
   font-weight: bold;

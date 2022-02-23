@@ -28,7 +28,7 @@ const DrinkPage: FunctionComponent<DrinkPageProps> = ({ drink }) => {
       </Head>
       <div className={styles.arrowContainer}>
         <Link href="/" passHref>
-          <ArrowBack className={styles.arrowBack} />
+          <ArrowBack />
         </Link>
       </div>
       <div className={styles.pageContainer}>
